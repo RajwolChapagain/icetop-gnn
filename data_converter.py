@@ -4,7 +4,7 @@ from graphnet.data.dataconverter import DataConverter
 from graphnet.data.readers import I3Reader
 from graphnet.data.writers import SQLiteWriter
 
-dir_with_files = '~/data/'
+dir_with_files = '/home/rchapagain/data/'
 outdir = 'data_out/'
 num_workers = 1
 
