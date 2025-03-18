@@ -7,7 +7,7 @@ from graphnet.models import Model
 from graphnet.utilities.config import DatasetConfig, ModelConfig
 
 # Configuration
-dataset_config_path = f"{CONFIG_DIR}/datasets/training_example_data_sqlite.yml"
+dataset_config_path = f"test.yml"
 model_config_path = f"{CONFIG_DIR}/models/example_energy_reconstruction_model.yml"
 
 # Build model
@@ -25,7 +25,7 @@ dataloaders = DataLoader.from_dataset_config(
 # Train model
 model.fit(
     dataloaders["train"],
-    dataloaders["validation"],
+    dataloaders["test"],
     max_epochs=5,
 )
 
