@@ -18,5 +18,10 @@ dataset = SQLiteDataset(
     truth=["energy"],
 )
 
+dataset.config.selection = {
+        "train": "event_no % 2 == 0",
+        "test": "event_no % 2 == 1",
+}
+
 graph = dataset[0]  # torch_geometric.data.Data
 dataset.config.dump("test.yml")
