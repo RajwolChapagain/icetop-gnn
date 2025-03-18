@@ -8,7 +8,7 @@ from graphnet.utilities.config import DatasetConfig, ModelConfig
 
 # Configuration
 dataset_config_path = f"test.yml"
-model_config_path = f"{CONFIG_DIR}/models/example_energy_reconstruction_model.yml"
+model_config_path = f"{CONFIG_DIR}/models/icetop_energy_reconstruction_model.yml"
 
 # Build model
 model_config = ModelConfig.load(model_config_path)
