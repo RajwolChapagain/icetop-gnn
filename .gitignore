@@ -1,2 +1,4 @@
 logs/
 data_out/
+lightning_logs/
+tutorial_output/
