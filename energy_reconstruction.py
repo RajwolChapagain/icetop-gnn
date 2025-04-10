@@ -36,8 +36,4 @@ results = model.predict_as_dataframe(
 )
 
 # Save predictions and model to file
-outdir = "tutorial_output"
-os.makedirs(outdir, exist_ok=True)
-results.to_csv(f"{outdir}/results.csv")
-model.save_state_dict(f"{outdir}/state_dict.pth")
-model.save(f"{outdir}/model.pth")
+print(results)
