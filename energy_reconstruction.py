@@ -19,14 +19,14 @@ dataset_config = DatasetConfig.load(dataset_config_path)
 dataloaders = DataLoader.from_dataset_config(
     dataset_config,
     batch_size=16,
-    num_workers=1,
+    num_workers=63,
 )
 
 # Train model
 model.fit(
     dataloaders["train"],
-    dataloaders["test"],
-    max_epochs=5,
+    dataloaders["test"],# Needs to be validation instead of test since we're also predicting test
+    max_epochs=10,
 )
 
 # Predict on test set and return as pandas.DataFrame
