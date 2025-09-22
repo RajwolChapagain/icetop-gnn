@@ -6,7 +6,7 @@ from graphnet.models.graphs.nodes  import  NodesAsPulses
 graph_definition = KNNGraph(
     detector=IceTop(),
     node_definition=NodesAsPulses(),
-    nb_nearest_neighbours=8,
+    nb_nearest_neighbours=32,
 )
 
 dataset = SQLiteDataset(
@@ -18,14 +18,10 @@ dataset = SQLiteDataset(
     truth=["energy"],
 )
 
-print(len(dataset))
-
 dataset.config.selection = {
-        "train": "event_no < 300000",
-        "validation": "event_no > 300000 & event_no < 310000",
-        "test": "event_no > 310000",
+        "train": "event_no % 5 > 1",
+        "validation": "event_no % 5 == 0",
+        "test": "event_no % 5 == 1",
 }
 
-print(dataset.path)
-graph = dataset[0]  # torch_geometric.data.Data
-dataset.config.dump("test.yml")
+dataset.config.dump("configs/dataset_config.yml")
