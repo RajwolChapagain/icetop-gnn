@@ -4,9 +4,8 @@ from graphnet.data.dataconverter import DataConverter
 from graphnet.data.readers import I3Reader
 from graphnet.data.writers import SQLiteWriter
 
-#dir_with_files = '/home/rchapagain/data/'
 dir_with_files = '/data/ana/CosmicRay/IceTop_level3/sim/IC86.2012/oldstructure/12360'
-outdir = 'data_out/'
+outdir = '/home/rchapagain/icetop-gnn/data_out/'
 
 # Instantiate DataConverter - exports data from I3 to SQLite
 converter = DataConverter(file_reader = I3Reader('/home/rchapagain/data/gcd/GeoCalibDetectorStatus_2012.56063_V1_OctSnow_scint.i3'),
