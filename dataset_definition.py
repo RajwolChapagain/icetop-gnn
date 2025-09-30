@@ -29,8 +29,9 @@ dataset = SQLiteDataset(
 )
 
 dataset.config.selection = {
-        "lean": "30000 random events ~",
+        "lean": "120000 random events ~ event_no==event_no",
+        "full": "event_no==event_no"
 }
 
 dataset.config.dump(f"configs/{args.output}")
-print(f"Dataset config dumped to configs/{args.output}")
+print(f"Dataset config dumped to configs/{args.output}.yml")
