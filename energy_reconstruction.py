@@ -66,7 +66,7 @@ dataloaders = {
 # Callbacks
 callbacks = [
     ProgressBar(),
-    EarlyStopping(monitor="val_loss", patience=15, mode="min"),  # stop if no progress
+    EarlyStopping(monitor="val_loss", patience=10, mode="min"),  # stop if no progress
     ModelCheckpoint(dirpath="checkpoints", save_top_k=1, monitor="val_loss", mode="min"),
 ]
 
