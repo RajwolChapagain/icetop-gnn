@@ -31,7 +31,7 @@ converter = DataConverter(file_reader = I3Reader('/data/user/rchapagain/GeoCalib
                           save_method = SQLiteWriter(),
                           extractors=[ITTruthExtractor(name = "truth_table"), ITFeatureExtractor(pulsemap = "OfflineIceTopSLCTankPulses"), ITFeatureExtractor(pulsemap = "OfflineIceTopHLCTankPulses")],
                           outdir=args.outdir,
-                          num_workers = multiprocessing.cpu_count(),
+                          num_workers = max(1, multiprocessing.cpu_count() - 2), # Leave a couple of cores free for other work
                         )
 # Run Converter
 converter(input_dir = args.indir)
