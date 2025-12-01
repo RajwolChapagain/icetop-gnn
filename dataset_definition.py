@@ -6,6 +6,12 @@ from graphnet.models.graphs.nodes  import  NodesAsPulses
 
 parser = argparse.ArgumentParser(description="Dump GraphNeT dataset config")
 parser.add_argument(
+    "--input", "-o",
+    type=str,
+    required=True,
+    help="Input .db file to use"
+)
+parser.add_argument(
     "--output", "-o",
     type=str,
     required=True,
@@ -20,7 +26,7 @@ graph_definition = KNNGraph(
 )
 
 dataset = SQLiteDataset(
-    path="data_out/merged/merged.db",
+    path=args.input,
     graph_definition=graph_definition,
     pulsemaps="OfflineIceTopHLCTankPulses",
     features=["charge", "dom_time", "dom_x", "dom_y"], 
