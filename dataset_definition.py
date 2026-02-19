@@ -6,7 +6,7 @@ from graphnet.models.graphs.nodes  import  NodesAsPulses
 
 parser = argparse.ArgumentParser(description="Dump GraphNeT dataset config")
 parser.add_argument(
-    "--input", "-o",
+    "--input", "-i",
     type=str,
     required=True,
     help="Input .db file to use"
@@ -28,8 +28,8 @@ graph_definition = KNNGraph(
 dataset = SQLiteDataset(
     path=args.input,
     graph_definition=graph_definition,
-    pulsemaps="OfflineIceTopHLCTankPulses",
-    features=["charge", "dom_time", "dom_x", "dom_y"], 
+    pulsemaps=["OfflineIceTopHLCTankPulses", "OfflineIceTopSLCTankPulses"],
+    features=["charge", "dom_time", "dom_x", "dom_y", "hlc"], 
     truth_table="truth_table",
     truth=["energy"],
 )
