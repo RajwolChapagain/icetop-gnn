@@ -1,8 +1,8 @@
 import argparse
 from graphnet.data.dataset.sqlite.sqlite_dataset import SQLiteDataset
-from graphnet.models.detector.icecube import IceTop
-from graphnet.models.graphs  import  KNNGraph
-from graphnet.models.graphs.nodes  import  NodesAsPulses
+from graphnet.models.detector.icecube import IceCube86
+from graphnet.models.graphs import KNNGraph
+from graphnet.models.graphs.nodes import NodesAsPulses
 
 parser = argparse.ArgumentParser(description="Dump GraphNeT dataset config")
 parser.add_argument(
@@ -17,10 +17,11 @@ parser.add_argument(
     required=True,
     help="Filename under configs folder to save the dataset config YAML"
 )
+
 args = parser.parse_args()
 
 graph_definition = KNNGraph(
-    detector=IceTop(),
+    detector=IceCube86(),
     node_definition=NodesAsPulses(),
     nb_nearest_neighbours=32,
 )
@@ -28,8 +29,8 @@ graph_definition = KNNGraph(
 dataset = SQLiteDataset(
     path=args.input,
     graph_definition=graph_definition,
-    pulsemaps=["OfflineIceTopHLCTankPulses", "OfflineIceTopSLCTankPulses"],
-    features=["charge", "dom_time", "dom_x", "dom_y", "hlc"], 
+    pulsemaps=["OfflineIceTopHLCTankPulses"],
+    features=["dom_x", "dom_y", "dom_z", "dom_time", "charge", "rde", "pmt_area", "hlc"], 
     truth_table="truth_table",
     truth=["energy"],
 )
