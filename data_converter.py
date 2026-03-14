@@ -1,7 +1,7 @@
-from graphnet.data.extractors.icecube.ittruthextractor import ITTruthExtractor
-from graphnet.data.extractors.icecube.i3featureextractor import ITFeatureExtractor
-from graphnet.data.dataconverter import DataConverter
 from graphnet.data.readers import I3Reader
+from graphnet.data.extractors.icecube.i3truthextractor import I3TruthExtractor
+from graphnet.data.extractors.icecube.i3featureextractor import I3FeatureExtractorIceCube86
+from graphnet.data.dataconverter import DataConverter
 from graphnet.data.writers import SQLiteWriter
 import argparse
 import os
@@ -29,7 +29,7 @@ os.makedirs(args.outdir)
 # Instantiate DataConverter - exports data from I3 to SQLite
 converter = DataConverter(file_reader = I3Reader('/data/user/rchapagain/GeoCalibDetectorStatus_2012.56063_V1_OctSnow_scint.i3'),
                           save_method = SQLiteWriter(),
-                          extractors=[ITTruthExtractor(name = "truth_table"), ITFeatureExtractor(pulsemap = "OfflineIceTopSLCTankPulses"), ITFeatureExtractor(pulsemap = "OfflineIceTopHLCTankPulses")],
+                          extractors=[I3TruthExtractor(name = "truth_table"), I3FeatureExtractorIceCube86(pulsemap = "OfflineIceTopHLCTankPulses")],
                           outdir=args.outdir,
                           num_workers = max(1, multiprocessing.cpu_count() - 2), # Leave a couple of cores free for other work
                         )
